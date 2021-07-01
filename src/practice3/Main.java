@@ -33,9 +33,12 @@ public class Main {
                 case "2":
                     System.out.println("Виберіть номер учасника");
                     zooClub1.printMembers();
+                    if(zooClub1.getMemberList().size() ==0) {
+                        break;
+                    }
                     int number = scannerInt.nextInt();
 
-                    if (number < zooClub1.getMemberList().size() && number > 0) {
+                    if ((number-1) < zooClub1.getMemberList().size() && number > 0) {
                         System.out.println("Виберіть кличку тварини");
                         String animalName = scannerString.nextLine();
                         zooClub1.getMemberList().get(number - 1).addAnimal(new Animal(animalName));
@@ -46,14 +49,23 @@ public class Main {
 
                 case "3": {
 
-                    System.out.println("Виберіть номер учасника");
+                    System.out.println("Виберіть номер учасника клубу");
                     zooClub1.printMembers();
+
+                    if(zooClub1.getMemberList().size() ==0) {
+                        break;
+                    }
+
                     int memberNumber = scannerInt.nextInt();
-                    if (memberNumber < zooClub1.getMemberList().size() && memberNumber > 0) {
+                    if ((memberNumber-1) < zooClub1.getMemberList().size() && memberNumber > 0) {
                         System.out.println("Виберіть номер тварини");
                         zooClub1.getMemberList().get(memberNumber - 1).printAnimals();
+                        if(zooClub1.getMemberList().get(memberNumber - 1).getAnimalList().size() ==0){
+                            break;
+                        }
+
                         int animalNumber = scannerInt.nextInt();
-                        if (animalNumber < zooClub1.getMemberList().get(memberNumber - 1).getAnimalList().size()) {
+                        if ((animalNumber-1) < zooClub1.getMemberList().get(memberNumber - 1).getAnimalList().size() && animalNumber > 0) {
                             zooClub1.getMemberList().get(memberNumber - 1).removeAnimal(animalNumber - 1);
                         } else {
                             System.out.println("В учасника немає такої тварини");
@@ -67,8 +79,18 @@ public class Main {
                 case "4": {
                     System.out.println("Виберіть номер учасника");
                     zooClub1.printMembers();
+                    if(zooClub1.getMemberList().size() ==0) {
+                        break;
+                    }
+
                     int memberNumber = scannerInt.nextInt();
-                    zooClub1.getMemberList().get(memberNumber - 1).printAnimals();
+
+                    if((memberNumber-1) < zooClub1.getMemberList().size() && memberNumber > 0){
+                        zooClub1.getMemberList().get(memberNumber - 1).printAnimals();
+                    } else {
+                        System.out.println("В клубі немає такого учасника");
+                    }
+
                     break;
                 }
                 case "5": {

@@ -47,11 +47,11 @@ public class Member {
             System.out.println("В учасника клубу немає тварин");
             return;
         }
-        for (Animal animal : animalList) {
-            int count = 1;
-            System.out.println(count + ". " + animal.getName());
+        System.out.println("Учасники клубу:");
+        for (int i =0; i<this.animalList.size();i++) {
+
+            System.out.println((i+1) + ". " + this.animalList.get(i).getName());
         }
-        System.out.println();
     }
 
     public void addAnimal(Animal animal) {
