@@ -42,9 +42,10 @@ public class ZooClub {
 
         }
         else {
-            System.out.println("Немає такого учасникв");
+            System.out.println("Немає такого учасника");
         }
     }
+
 
 
     public void printMembers() {

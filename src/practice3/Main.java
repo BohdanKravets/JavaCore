@@ -31,7 +31,7 @@ public class Main {
             String choose = scannerString.nextLine();
 
             switch (choose) {
-                case "1":
+                case "1": {
                     System.out.println("Введіть імя учасника");
                     String memberName = scannerString.nextLine();
 
@@ -40,23 +40,24 @@ public class Main {
 
                     zooClub1.addMember(new Member(memberName, memberAge));
                     break;
-                case "2":
+                }
+                case "2": {
                     System.out.println("Виберіть номер учасника");
                     zooClub1.printMembers();
                     if (zooClub1.getMemberList().size() == 0) {
                         break;
                     }
-                    int number = scannerInt.nextInt();
+                    int memberNumber = scannerInt.nextInt();
 
-                    if ((number - 1) < zooClub1.getMemberList().size() && number > 0) {
+                    if ((memberNumber - 1) < zooClub1.getMemberList().size() && memberNumber > 0) {
                         System.out.println("Виберіть кличку тварини");
                         String animalName = scannerString.nextLine();
-                        zooClub1.getMemberList().get(number - 1).addAnimal(new Animal(animalName));
+                        zooClub1.getMemberList().get(memberNumber - 1).addAnimal(new Animal(animalName));
                     } else {
                         System.out.println("В зооклубі немає такого учасника");
                     }
                     break;
-
+                }
                 case "3": {
 
                     System.out.println("Виберіть номер учасника клубу");
@@ -86,7 +87,7 @@ public class Main {
                     }
                     break;
                 }
-                case "4":{
+                case "4": {
                     System.out.println("Виберіть номер учасника клубу");
                     zooClub1.printMembers();
 
@@ -96,7 +97,7 @@ public class Main {
 
                     int memberNumber = scannerInt.nextInt();
                     zooClub1.removeMember(memberNumber);
-
+                    break;
                 }
 
 
