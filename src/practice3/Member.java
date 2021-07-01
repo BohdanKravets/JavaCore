@@ -47,7 +47,7 @@ public class Member {
             System.out.println("В учасника клубу немає тварин");
             return;
         }
-        System.out.println("Учасники клубу:");
+        System.out.println("Тварини учасника:");
         for (int i =0; i<this.animalList.size();i++) {
 
             System.out.println((i+1) + ". " + this.animalList.get(i).getName());

@@ -36,13 +36,23 @@ public class ZooClub {
 
     }
 
+    public void removeMember(int memberNumber){
+        if ((memberNumber - 1) < this.memberList.size() && memberNumber > 0) {
+            this.memberList.remove(memberNumber-1);
+
+        }
+        else {
+            System.out.println("Немає такого учасникв");
+        }
+    }
+
 
     public void printMembers() {
         if (memberList.size() == 0) {
             System.out.println("В клубі немає учасників");
             return;
         }
-        System.out.println("Тварини учасника:");
+        System.out.println("Учасники клубу:");
         for (int i = 0; i < memberList.size(); i++) {
             System.out.println( (i+1) + ". "+ memberList.get(i).getName() + " " + memberList.get(i).getAge());
         }
