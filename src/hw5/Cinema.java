@@ -51,8 +51,7 @@ public class Cinema {
             if (entry.getKey().toString().equalsIgnoreCase(day)) {
                 if (seance.getStartTime().compareTo(this.open) > 0 && seance.getEndTime().compareTo(this.close) < 0) {
                     entry.getValue().addSeance(seance);
-                }
-                else {
+                } else {
                     System.out.println("Cinema is closed");
                 }
             }
@@ -67,8 +66,7 @@ public class Cinema {
                 for (Seance seance : seances) {
                     if (seance.getStartTime().compareTo(this.open) > 0 && seance.getEndTime().compareTo(this.close) < 0) {
                         entry.getValue().addSeance(seance);
-                    }
-                    else {
+                    } else {
                         System.out.println("Cinema is closed");
                     }
 

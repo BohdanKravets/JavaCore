@@ -26,7 +26,11 @@ public class Schedule {
         boolean flag = true;
 
         for (Seance s : this.seanceList) {
-            if (seance.getStartTime().compareTo(s.getStartTime()) > 0 && seance.getEndTime().compareTo(s.getEndTime()) < 0) {
+            if ((seance.getStartTime().compareTo(s.getStartTime()) > 0
+                    && seance.getStartTime().compareTo(s.getEndTime()) < 0) ||
+                    ((seance.getEndTime().compareTo(s.getStartTime()) > 0
+                            && seance.getEndTime().compareTo(s.getEndTime()) < 0))
+            ) {
                 flag = false;
                 System.out.println("here");
                 break;
