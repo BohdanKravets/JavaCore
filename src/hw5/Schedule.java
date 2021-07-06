@@ -20,6 +20,8 @@ public class Schedule {
         this.seanceList = seanceList;
     }
 
+
+    //не розумію чому не працює
     public void addSeance(Seance seance) {
         boolean flag = true;
 
