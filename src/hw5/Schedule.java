@@ -21,7 +21,7 @@ public class Schedule {
     }
 
 
-    //не розумію чому не працює
+    //не розумію чому не працює, не має додавати фільм якщо конфліктує з часом інших фільмів
     public void addSeance(Seance seance) {
         boolean flag = true;
 
