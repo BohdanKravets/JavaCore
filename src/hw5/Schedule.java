@@ -1,8 +1,8 @@
 package hw5;
 
+
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public class Schedule {
     private TreeSet<Seance> seanceList;
@@ -21,18 +21,16 @@ public class Schedule {
     }
 
 
-    //не розумію чому не працює, не має додавати фільм якщо конфліктує з часом інших фільмів
     public void addSeance(Seance seance) {
         boolean flag = true;
 
         for (Seance s : this.seanceList) {
             if ((seance.getStartTime().compareTo(s.getStartTime()) > 0
-                    && seance.getStartTime().compareTo(s.getEndTime()) < 0) ||
+                    && (seance.getStartTime().compareTo(s.getEndTime())) < 0) ||
                     ((seance.getEndTime().compareTo(s.getStartTime()) > 0
-                            && seance.getEndTime().compareTo(s.getEndTime()) < 0))
+                            && (seance.getEndTime().compareTo(s.getEndTime())) < 0))
             ) {
                 flag = false;
-                System.out.println("here");
                 break;
             }
         }
@@ -44,23 +42,29 @@ public class Schedule {
         }
     }
 
-    public void removeByMovieTitle(String movieTitle) {
+    public boolean removeByMovieTitle(String movieTitle) {
 
-        this.seanceList.removeIf(seance -> seance.getMovie().getTitle().equals(movieTitle));
+        return this.seanceList.removeIf(seance -> seance.getMovie().getTitle().equals(movieTitle));
+
     }
 
 
     public void removeSeance(Seance seance) {
 
-        this.seanceList.remove(seance);
+        if (this.seanceList.remove(seance)) {
+            System.out.println("Seance is removed");
+        } else {
+            System.out.println("There no such seance");
+        }
+
     }
 
 
     @Override
     public String toString() {
-        String seances = "";
+        StringBuilder seances = new StringBuilder();
         for (Seance seance : this.seanceList) {
-            seances = seance.toString() + seances;
+            seances.insert(0, seance.toString());
         }
         return "Schedule:\n" + seances;
 

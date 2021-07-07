@@ -13,6 +13,8 @@ public class Movie {
         this.duration = duration;
     }
 
+
+
     public String getTitle() {
         return title;
     }
@@ -31,6 +33,6 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie title: " + this.title +" Movie Duration: " + this.duration +"\n";
+        return "Movie title: " + this.title + " Movie Duration: " + this.duration + "\n";
     }
 }

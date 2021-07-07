@@ -1,6 +1,6 @@
 package hw5;
 
-public class Time implements Comparable {
+public class Time implements Comparable<Time> {
     private int hours;
     private int minutes;
 
@@ -8,11 +8,10 @@ public class Time implements Comparable {
     }
 
     public Time(int hours, int minutes) {
-        if((hours>=0 && hours<24) || (minutes>=0 && minutes<60) ) {
+        if ((hours >= 0 && hours < 24) || (minutes >= 0 && minutes < 60)) {
             this.hours = hours;
             this.minutes = minutes;
-        }
-        else {
+        } else {
             System.out.println("Wrong time");
         }
 
@@ -23,10 +22,9 @@ public class Time implements Comparable {
     }
 
     public void setHours(int hours) {
-        if(hours>=0 && hours<60 ) {
+        if (hours >= 0 && hours < 60) {
             this.hours = hours;
-        }
-        else {
+        } else {
             System.out.println("Wrong hours");
         }
     }
@@ -36,22 +34,24 @@ public class Time implements Comparable {
     }
 
     public void setMinutes(int minutes) {
-        if(minutes>=0 && minutes<60 ) {
+        if (minutes >= 0 && minutes < 60) {
             this.minutes = minutes;
-        }
-        else {
+        } else {
             System.out.println("Wrong minutes");
         }
     }
 
     @Override
     public String toString() {
-        return  this.hours +  " : " + this.minutes;
+        String minutes = this.minutes < 10 ? "0" + this.minutes : String.valueOf(this.minutes);
+        String hours = this.hours < 10 ? "0" + this.hours : String.valueOf(this.hours);
+
+        return hours + ":" + minutes;
     }
 
+
     @Override
-    public int compareTo(Object o) {
-        Time t = (Time) o;
+    public int compareTo(Time t) {
         if (this.getHours() - t.getHours() == 0) {
             return this.getMinutes() - t.getMinutes();
         }

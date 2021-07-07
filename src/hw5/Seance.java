@@ -1,6 +1,6 @@
 package hw5;
 
-public class Seance implements Comparable {
+public class Seance implements Comparable<Seance> {
     private Movie movie;
     private Time startTime;
     private Time endTime;
@@ -16,7 +16,6 @@ public class Seance implements Comparable {
         int endTimeMinutes = (this.startTime.getMinutes() + this.movie.getDuration().getMinutes()) % 60;
         this.endTime = new Time(endTimeHours, endTimeMinutes);
     }
-
 
 
     public Movie getMovie() {
@@ -42,16 +41,13 @@ public class Seance implements Comparable {
 
     @Override
     public String toString() {
-        return "\nSeance:" +
-                "\nMovie Title: " + movie.getTitle() +
-                "\nstartTime: " + startTime +
-                "\nendTime: " + endTime;
+        return "Movie Title: " + movie.getTitle() + ", startTime: " + startTime + ", endTime: " + endTime + "\n";
+
     }
 
 
     @Override
-    public int compareTo(Object o) {
-        Seance s = (Seance) o;
+    public int compareTo(Seance s) {
         return s.startTime.compareTo(this.startTime);
     }
 }

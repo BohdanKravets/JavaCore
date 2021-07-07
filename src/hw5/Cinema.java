@@ -8,6 +8,11 @@ public class Cinema {
     Time close;
 
     public Cinema() {
+        this.daysSchedules = new TreeMap<>();
+        Days[] days = Days.values();
+        for (Days day : days) {
+            this.daysSchedules.put(day, new Schedule());
+        }
     }
 
     public Cinema(Time open, Time close) {
@@ -77,27 +82,45 @@ public class Cinema {
     }
 
     public void removeSeance(String day, Seance seance) {
+
         final Set<Map.Entry<Days, Schedule>> entries = this.daysSchedules.entrySet();
         for (Map.Entry<Days, Schedule> entry : entries) {
             if (entry.getKey().toString().equalsIgnoreCase(day)) {
                 entry.getValue().removeSeance(seance);
             }
         }
+
     }
 
+
     public void removeMovie(String movieTitle) {
+        boolean isMoviePresent = false;
         final Set<Map.Entry<Days, Schedule>> entries = this.daysSchedules.entrySet();
         for (Map.Entry<Days, Schedule> entry : entries) {
-            entry.getValue().removeByMovieTitle(movieTitle);
+            final boolean isRemoved = entry.getValue().removeByMovieTitle(movieTitle);
+            if (isRemoved) {
+                isMoviePresent = true;
+                System.out.println("Movie " + movieTitle + " is remove from schedule on " + entry.getKey());
+            }
+        }
+        if (!isMoviePresent) {
+            System.out.println("Movie " + movieTitle + " isn't present on schedule ");
         }
     }
 
     @Override
     public String toString() {
-        return "Cinema{" +
-                "daysSchedules=" + daysSchedules +
-                ", open=" + open +
-                ", close=" + close +
-                '}';
+        StringBuilder weekSchedule = new StringBuilder();
+        final Set<Map.Entry<Days, Schedule>> entries = daysSchedules.entrySet();
+        for (Map.Entry<Days, Schedule> entry : entries) {
+            weekSchedule.append("\t").append(entry.getKey()).append(" ").append(entry.getValue());
+        }
+
+        return "\t\tCinema\n" +
+                weekSchedule +
+                "Cinema is opened at " + open +
+                "\nCinema is closed at " + close;
     }
+
+
 }
